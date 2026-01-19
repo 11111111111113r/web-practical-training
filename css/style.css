@@ -1,0 +1,40 @@
+@charset "UTF-8";
+
+/* メイン画像 配置 */
+.product-list{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    gap:35px
+
+}
+
+/* 表示サイズ */
+.wrapper{
+    width:100vw;
+    max-width: 1360px;
+    margin: 0 auto;
+    padding: 0 40px;
+}
+
+.product-list img{
+    width: 100%;
+}
+
+#header{
+    display: flex;
+    justify-content: space-between;
+}
+
+.product-list{
+    list-style: none;
+}
+
+#footer .menu{
+    display: flex;
+    list-style: none;
+    justify-content: flex-start;
+}
+
+.menu li{
+    margin-right: 15px;
+}
