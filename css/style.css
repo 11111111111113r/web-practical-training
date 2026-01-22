@@ -52,5 +52,17 @@ a{
 
 /* レスポンシブ対応 */
 @media(max-width:600px){
-    
+    .product-list{
+        grid-template-columns: repeat(2,1fr);
+        gap:20px
+    }
+    .product-list p{
+        font-size: 0.8;
+        line-height: 1.4;
+        margin-top: 6px;
+    }
+    .site-title img{
+        height: 24px;
+        width: auto;
+    }
 }
