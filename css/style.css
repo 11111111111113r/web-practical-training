@@ -38,3 +38,14 @@
 .menu li{
     margin-right: 15px;
 }
+
+a{
+    text-decoration: none;
+    color: black;
+}
+
+.link-text{
+    display: block;
+    text-align: center;
+    margin-top: 40px;
+}
