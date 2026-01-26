@@ -63,8 +63,7 @@ a{
 }
 
 .item-img img{
-    height: 400px;
-    width: auto;
+    width: 42%;
 }
 
 .item-text{
@@ -78,7 +77,9 @@ a{
     text-align: left;
     font-weight: normal;
 }
-
+.item .item-img img{
+    width: 100%;
+}
 /* レスポンシブ対応 */
 @media(max-width:600px){
     .product-list{
@@ -93,5 +94,12 @@ a{
     .site-title img{
         height: 24px;
         width: auto;
+    }
+    .item{
+        flex-direction: column;
+    }
+    .item .item-img,
+    .item .item-text{
+        width: 100%;
     }
 }
