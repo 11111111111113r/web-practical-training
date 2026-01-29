@@ -52,9 +52,15 @@ a{
 }
 /* item */
 .item{
-    display: flex;
     max-width: 800px;
-    margin: 1rem;
+    display: flex;
+    justify-content: space-between;
+}
+.item .item-text{
+    width: 50%;
+}
+.item .item-text p{
+    margin-bottom: 20px;
 }
 
 .page-title{
@@ -62,24 +68,14 @@ a{
     margin-bottom: 10px;
 }
 
-.item-img img{
+.item .item-img{
     width: 42%;
 }
 
-.item-text{
-    margin-left: 4rem;
-}
-.item-text p{
-    margin-bottom: 10px;
-}
-
-.item table th{
-    text-align: left;
-    font-weight: normal;
-}
 .item .item-img img{
     width: 100%;
 }
+
 /* レスポンシブ対応 */
 @media(max-width:600px){
     .product-list{
