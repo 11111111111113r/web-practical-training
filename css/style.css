@@ -75,7 +75,9 @@ a{
 .item .item-img img{
     width: 100%;
 }
-
+.info tr{
+    border-bottom: solid;
+}
 /* レスポンシブ対応 */
 @media(max-width:600px){
     .product-list{
