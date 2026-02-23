@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="0.css">
+    <link rel="stylesheet" href="https://unpkg.com/ress/dist/ress.min.css">
+</head>
+<body>
+    <a href="4.html"  class="top">top</a>
+    <div class="q"></div>
+
+    <table>
+      <tr>
+        <td><img class="thumbnail" src="img/IMG_0355.jpeg"></td>
+        <td><img class="thumbnail" src="img/IMG_0479.jpeg"></td>
+        <td><img class="thumbnail" src="img/IMG_1189.jpeg"></td>
+      </tr>
+      <tr>
+        <td><img class="thumbnail" src="img/IMG_0754.jpeg"></td>        
+        <td><img class="thumbnail" src="img/IMG_1699.jpeg"></td>        
+      </tr>
+    </table>
+
+
+    <div class="loader" id="loader">
+    <span class="loader-inner outer"></span>
+    <span class="loader-inner outer-2"></span>
+    <span class="loader-inner before"></span>
+    <span class="loader-inner after"></span>
+  </div>
+
+  <div id="modal-overlay" onclick="closeModal()">
+    <img id="modal-image" src="" alt="拡大表示">
+  </div>
+
+  <a href="3.html" class="fi"></a>
+
+
+<script>
+    // 全てのサムネイル要素を取得
+    const thumbnails = document.querySelectorAll('.thumbnail');
+    const overlay = document.getElementById('modal-overlay');
+    const modalImg = document.getElementById('modal-image');
+
+    // 画像クリック時の処理
+    thumbnails.forEach(img => {
+        img.addEventListener('click', () => {
+            modalImg.src = img.src; // クリックした画像のパスを拡大用にコピー
+            overlay.style.display = 'flex'; // モーダルを表示
+        });
+    });
+
+    // 背景クリックで閉じる処理
+    function closeModal() {
+        overlay.style.display = 'none';
+    }
+</script>
+
+    <script src="4.js" defer></script>
+</body>
+</html>

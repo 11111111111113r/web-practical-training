@@ -1,0 +1,132 @@
+html{
+    height: 100%;
+}
+body{
+  background-color:white;
+  cursor: none;
+  height: 100%;
+}
+.top{
+  top: 0;
+  left: 0;
+  width: 60px;
+  height: 30px;
+  font-size: 20px;
+  background-color: rgb(174, 255, 0);
+  display: flex;
+  justify-content: center;
+  color: black;
+  text-decoration: none;
+}
+/* カーソル */
+.loader {
+  width: 100px;
+  height: 100px;
+  position: relative;
+}
+.loader-inner {
+  position: absolute;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  box-sizing: border-box;
+}
+.before {
+  top: 5px; left: 5px; right: 5px; bottom: 5px;
+  border-left-color: var(--line-color);
+  border-right-color: var(--line-color);
+}
+.after {
+  top: 15px; left: 15px; right: 15px; bottom: 15px;
+  border-top-color: var(--line-color);
+  border-left-color: var(--line-color);
+}
+/* outerとouter-2を共通設定にする */
+.outer, .outer-2 {
+  top: -5px; left: -5px; right: -5px; bottom: -5px;
+  border-width: 2px; /* 太さもお好みで */
+}
+/* 1本目：下側に色 */
+.outer {
+  border-bottom-color: var(--line-color);
+}
+/* 2本目（追加分）：上側に色 */
+.outer-2 {
+  border-top-color: var(--line-color);
+}
+
+.loader {
+  width: 100px;
+  height: 100px;
+  position: fixed; /* absoluteからfixedに変更 */
+  top: 0;
+  left: 0;
+  pointer-events: none; /* 下にあるリンクをクリックできるようにする */
+  z-index: 9999; /* 一番手前に出す */
+  opacity: 0; 
+  transition: opacity 0.3s ease;
+}
+/* CSS変数が設定されていない場合のために、色を指定しておくと安心です */
+:root {
+  --line-color: rgb(255, 0, 0); /* 好きな色に */
+  --speed: 2s;
+}
+
+
+
+
+        /* テーブルの基本設定 */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            table-layout: fixed; /* セルの幅を固定 */
+        }
+        td {
+            padding: 10px;
+            text-align: center;
+            width: 200px;
+            height: 150px;
+        }
+        /* サムネイル画像のデザイン */
+        .thumbnail {
+            width: 100%;
+            height: auto;
+            cursor: pointer;
+            transition: opacity 0.3s;
+            width: 100%;      /* 親要素（td）の幅いっぱいに広げる */
+            height: 100%;     /* 親要素（td）の高さいっぱいに広げる */
+            object-fit: cover; /* 枠に合わせて画像をトリミングして収める（隙間ができない） */
+            cursor: pointer;
+            display: block;   /* 下に微妙な隙間ができるのを防ぐ */
+        }
+        .thumbnail:hover {
+            opacity: 0.8;
+        }
+
+        /* 拡大表示（モーダル）の背景 */
+        #modal-overlay {
+            display: none; /* 初期状態は非表示 */
+            position: fixed;
+            z-index: 1000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+        /* 拡大画像 */
+        #modal-image {
+            max-width: 90%;
+            max-height: 90%;
+            border: 3px solid #fff;
+        }
+
+        .fi{
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            width: 20px;
+            height: 20px;
+            background-color: red;
+        }

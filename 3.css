@@ -1,0 +1,660 @@
+html{
+  height: 100%;
+}
+body{
+  cursor:none;
+  height: 100%;
+}
+
+/* カーソル */
+.loader {
+  width: 100px;
+  height: 100px;
+  position: relative;
+}
+.loader-inner {
+  position: absolute;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  box-sizing: border-box;
+}
+
+.before {
+  top: 5px; left: 5px; right: 5px; bottom: 5px;
+  border-left-color: var(--line-color);
+  border-right-color: var(--line-color);
+}
+
+.after {
+  top: 15px; left: 15px; right: 15px; bottom: 15px;
+  border-top-color: var(--line-color);
+  border-left-color: var(--line-color);
+}
+
+
+/* outerとouter-2を共通設定にする */
+.outer, .outer-2 {
+  top: -5px; left: -5px; right: -5px; bottom: -5px;
+  border-width: 2px; /* 太さもお好みで */
+  
+}
+
+/* 1本目：下側に色 */
+.outer {
+  border-bottom-color: var(--line-color);
+}
+
+/* 2本目（追加分）：上側に色 */
+.outer-2 {
+  border-top-color: var(--line-color);
+}
+
+
+
+.loader {
+  width: 100px;
+  height: 100px;
+  position: fixed; /* absoluteからfixedに変更 */
+  top: 0;
+  left: 0;
+  pointer-events: none; /* 下にあるリンクをクリックできるようにする */
+  z-index: 9999; /* 一番手前に出す */
+  opacity: 0; 
+  transition: opacity 0.3s ease;
+}
+
+/* CSS変数が設定されていない場合のために、色を指定しておくと安心です */
+:root {
+  --line-color: rgb(255, 0, 0); /* 好きな色に */
+  --speed: 2s;
+}
+
+
+
+
+:root {
+  --vxAngle: 0deg;
+  --vyAngle: 0deg;
+  --vxMove: 0;
+  --vyMove: 0;
+  --vRefAngle: 0deg;
+}
+
+@keyframes eyeBlink {
+  0%, 2%, 4%, 100% {
+    clip-path: path("M0,100s45,55,100,55,100-55,100-55c0,0-45-55-100-55S0,100,0,100Z");
+  }
+  1% {
+    clip-path: path("M0,100s45,0,100,0,100-0,100-0c0,0-45-0-100-0S0,100,0,100Z");
+  }
+  3% {
+    clip-path: path("M0,100s45,20,100,20,100-20,100-20c0,0-45-20-100-20S0,100,0,100Z");
+  }
+}
+body {
+  margin: 0;
+  padding: 0;
+  /* お好みの画像URLに置き換えてください */
+  background-image: url('img/AdobeStock_510665292.jpeg'); 
+  background-size: cover;      /* 画面いっぱいに広げる */
+  background-position: -38px -132px; /* 中央に配置 */
+  background-attachment: fixed; /* スクロールしても動かない（視差効果） */
+  background-color:darkblue;
+}
+
+.container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 100vh;
+}
+.container:has(.vision__item--c0:hover) {
+  --vxMove: -9px;
+  --vxAngle: atan(-0.54);
+}
+.container:has(.vision__item--r0:hover) {
+  --vyMove: -9px;
+  --vyAngle: atan(0.54);
+}
+.container:has(.vision__item--c1:hover) {
+  --vxMove: -8px;
+  --vxAngle: atan(-0.48);
+}
+.container:has(.vision__item--r1:hover) {
+  --vyMove: -8px;
+  --vyAngle: atan(0.48);
+}
+.container:has(.vision__item--c2:hover) {
+  --vxMove: -7px;
+  --vxAngle: atan(-0.42);
+}
+.container:has(.vision__item--r2:hover) {
+  --vyMove: -7px;
+  --vyAngle: atan(0.42);
+}
+.container:has(.vision__item--c3:hover) {
+  --vxMove: -6px;
+  --vxAngle: atan(-0.36);
+}
+.container:has(.vision__item--r3:hover) {
+  --vyMove: -6px;
+  --vyAngle: atan(0.36);
+}
+.container:has(.vision__item--c4:hover) {
+  --vxMove: -5px;
+  --vxAngle: atan(-0.3);
+}
+.container:has(.vision__item--r4:hover) {
+  --vyMove: -5px;
+  --vyAngle: atan(0.3);
+}
+.container:has(.vision__item--c5:hover) {
+  --vxMove: -4px;
+  --vxAngle: atan(-0.24);
+}
+.container:has(.vision__item--r5:hover) {
+  --vyMove: -4px;
+  --vyAngle: atan(0.24);
+}
+.container:has(.vision__item--c6:hover) {
+  --vxMove: -3px;
+  --vxAngle: atan(-0.18);
+}
+.container:has(.vision__item--r6:hover) {
+  --vyMove: -3px;
+  --vyAngle: atan(0.18);
+}
+.container:has(.vision__item--c7:hover) {
+  --vxMove: -2px;
+  --vxAngle: atan(-0.12);
+}
+.container:has(.vision__item--r7:hover) {
+  --vyMove: -2px;
+  --vyAngle: atan(0.12);
+}
+.container:has(.vision__item--c8:hover) {
+  --vxMove: -1px;
+  --vxAngle: atan(-0.06);
+}
+.container:has(.vision__item--r8:hover) {
+  --vyMove: -1px;
+  --vyAngle: atan(0.06);
+}
+.container:has(.vision__item--c9:hover) {
+  --vxMove: 0px;
+  --vxAngle: atan(0);
+}
+.container:has(.vision__item--r9:hover) {
+  --vyMove: 0px;
+  --vyAngle: atan(0);
+}
+.container:has(.vision__item--c10:hover) {
+  --vxMove: 1px;
+  --vxAngle: atan(0.06);
+}
+.container:has(.vision__item--r10:hover) {
+  --vyMove: 1px;
+  --vyAngle: atan(-0.06);
+}
+.container:has(.vision__item--c11:hover) {
+  --vxMove: 2px;
+  --vxAngle: atan(0.12);
+}
+.container:has(.vision__item--r11:hover) {
+  --vyMove: 2px;
+  --vyAngle: atan(-0.12);
+}
+.container:has(.vision__item--c12:hover) {
+  --vxMove: 3px;
+  --vxAngle: atan(0.18);
+}
+.container:has(.vision__item--r12:hover) {
+  --vyMove: 3px;
+  --vyAngle: atan(-0.18);
+}
+.container:has(.vision__item--c13:hover) {
+  --vxMove: 4px;
+  --vxAngle: atan(0.24);
+}
+.container:has(.vision__item--r13:hover) {
+  --vyMove: 4px;
+  --vyAngle: atan(-0.24);
+}
+.container:has(.vision__item--c14:hover) {
+  --vxMove: 5px;
+  --vxAngle: atan(0.3);
+}
+.container:has(.vision__item--r14:hover) {
+  --vyMove: 5px;
+  --vyAngle: atan(-0.3);
+}
+.container:has(.vision__item--c15:hover) {
+  --vxMove: 6px;
+  --vxAngle: atan(0.36);
+}
+.container:has(.vision__item--r15:hover) {
+  --vyMove: 6px;
+  --vyAngle: atan(-0.36);
+}
+.container:has(.vision__item--c16:hover) {
+  --vxMove: 7px;
+  --vxAngle: atan(0.42);
+}
+.container:has(.vision__item--r16:hover) {
+  --vyMove: 7px;
+  --vyAngle: atan(-0.42);
+}
+.container:has(.vision__item--c17:hover) {
+  --vxMove: 8px;
+  --vxAngle: atan(0.48);
+}
+.container:has(.vision__item--r17:hover) {
+  --vyMove: 8px;
+  --vyAngle: atan(-0.48);
+}
+.container:has(.vision__item--c18:hover) {
+  --vxMove: 9px;
+  --vxAngle: atan(0.54);
+}
+.container:has(.vision__item--r18:hover) {
+  --vyMove: 9px;
+  --vyAngle: atan(-0.54);
+}
+.container:has(.vision__item:nth-child(odd):hover) {
+  --vRefAngle: .8deg;
+}
+
+.vision {
+  position: fixed; /* absoluteから変更して画面に固定 */
+  top: 0;
+  left: 0;
+  width: 100vw;   /* 画面幅いっぱい */
+  height: 100vh;  /* 画面高さいっぱい */
+  z-index: 999;   /* 一番手前に持ってくる */
+  display: grid;
+  /* 19分割だと範囲が広いので、必要に応じて分割数を増やすか、
+     各アイテムを flex-grow 等で広げる */
+  grid-template-columns: repeat(19, 1fr);
+  grid-template-rows: repeat(19, 1fr); 
+  pointer-events: none; /* 下の要素をクリックしたい場合は工夫が必要 */
+}
+.vision__item {
+  width: 100%;
+  height: 100%;
+  pointer-events: auto;
+}
+
+.eye {
+  clip-path: path("M0,100s-10,100,100,100,100-100,100-100c0,0,10-100-100-100S0,100,0,100Z");
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background-color: white;
+  perspective: 650px;
+  transition: transform 0.25s ease, scale 0.25s ease-out, clip-path 0.25s ease;
+  transform: translate(var(--vxMove), var(--vyMove));
+  scale: 0.8;
+
+  isolation: isolate;
+  backface-visibility: hidden;
+  transform: translate(var(--vxMove), var(--vyMove)) translateZ(0);
+}
+.container:has(.vision:hover) .eye {
+  scale: 1;
+}
+.container:has(.openCb:not(:checked)) .eye {
+  clip-path: path("M0,100s45,55,100,55,100-55,100-55c0,0-45-55-100-55S0,100,0,100Z");
+}
+.container:has(.openCb:not(:checked)):has(.vision:hover) .eye {
+  animation: eyeBlink 10s ease infinite backwards;
+}
+.eye::before, .eye::after {
+  position: absolute;
+  border-radius: 50%;
+  content: "";
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+.eye::before {
+  z-index: 3;
+  box-shadow: inset 0 -30px 50px rgba(16, 16, 8, 0.8), inset 0 -5px 15px rgba(16, 16, 8, 0.8);
+  mix-blend-mode: multiply;
+}
+.eye::after {
+  z-index: 2;
+  opacity: 0.75;
+  background-image: radial-gradient(circle at 45% 45%, #ffe 30%, #222 70%);
+  mix-blend-mode: color-burn;
+}
+.eye__iris {
+  position: relative;
+  z-index: 1;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  background-image: radial-gradient(circle closest-side at center, #b86e29 45%, #94c7d4 55%, #94c7d4 65%, #58697C 94%, #fff 100%);
+  transition: transform 0.25s ease;
+  transform: rotateX(var(--vyAngle)) rotateY(var(--vxAngle)) translateZ(90px);
+  mix-blend-mode: multiply;
+}
+.eye__iris::before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  content: "";
+  z-index: 3;
+  width: 36px;
+  height: 36px;
+  background: radial-gradient(circle at center, #000 50%, transparent 100%);
+  border-radius: 50%;
+  opacity: 0.8;
+  filter: blur(3px);
+  transition: transform 0.3s ease;
+}
+.container:hover .eye__iris::before {
+  transform: translate(-50%, -50%) scale(0.8);
+}
+.eye__ciliary {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: grid;
+  width: 90%;
+  height: 90%;
+  z-index: 1;
+}
+.eye__ciliary--sub {
+  z-index: 2;
+  width: 55%;
+  height: 55%;
+}
+.eye__ciliaryItem {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  clip-path: polygon(50% 0, calc(50% + 2px) 50%, 50% 100%, calc(50% - 2px) 50%);
+  opacity: 0.3;
+  background-color: #0008;
+}
+.eye__ciliaryItem:nth-child(2) {
+  transform: rotateZ(5deg);
+}
+.eye__ciliaryItem:nth-child(3) {
+  transform: rotateZ(10deg);
+}
+.eye__ciliaryItem:nth-child(4) {
+  transform: rotateZ(15deg);
+}
+.eye__ciliaryItem:nth-child(5) {
+  transform: rotateZ(20deg);
+}
+.eye__ciliaryItem:nth-child(6) {
+  transform: rotateZ(25deg);
+}
+.eye__ciliaryItem:nth-child(7) {
+  transform: rotateZ(30deg);
+}
+.eye__ciliaryItem:nth-child(8) {
+  transform: rotateZ(35deg);
+}
+.eye__ciliaryItem:nth-child(9) {
+  transform: rotateZ(40deg);
+}
+.eye__ciliaryItem:nth-child(10) {
+  transform: rotateZ(45deg);
+}
+.eye__ciliaryItem:nth-child(11) {
+  transform: rotateZ(50deg);
+}
+.eye__ciliaryItem:nth-child(12) {
+  transform: rotateZ(55deg);
+}
+.eye__ciliaryItem:nth-child(13) {
+  transform: rotateZ(60deg);
+}
+.eye__ciliaryItem:nth-child(14) {
+  transform: rotateZ(65deg);
+}
+.eye__ciliaryItem:nth-child(15) {
+  transform: rotateZ(70deg);
+}
+.eye__ciliaryItem:nth-child(16) {
+  transform: rotateZ(75deg);
+}
+.eye__ciliaryItem:nth-child(17) {
+  transform: rotateZ(80deg);
+}
+.eye__ciliaryItem:nth-child(18) {
+  transform: rotateZ(85deg);
+}
+.eye__ciliaryItem:nth-child(19) {
+  transform: rotateZ(90deg);
+}
+.eye__ciliaryItem:nth-child(20) {
+  transform: rotateZ(95deg);
+}
+.eye__ciliaryItem:nth-child(21) {
+  transform: rotateZ(100deg);
+}
+.eye__ciliaryItem:nth-child(22) {
+  transform: rotateZ(105deg);
+}
+.eye__ciliaryItem:nth-child(23) {
+  transform: rotateZ(110deg);
+}
+.eye__ciliaryItem:nth-child(24) {
+  transform: rotateZ(115deg);
+}
+.eye__ciliaryItem:nth-child(25) {
+  transform: rotateZ(120deg);
+}
+.eye__ciliaryItem:nth-child(26) {
+  transform: rotateZ(125deg);
+}
+.eye__ciliaryItem:nth-child(27) {
+  transform: rotateZ(130deg);
+}
+.eye__ciliaryItem:nth-child(28) {
+  transform: rotateZ(135deg);
+}
+.eye__ciliaryItem:nth-child(29) {
+  transform: rotateZ(140deg);
+}
+.eye__ciliaryItem:nth-child(30) {
+  transform: rotateZ(145deg);
+}
+.eye__ciliaryItem:nth-child(31) {
+  transform: rotateZ(150deg);
+}
+.eye__ciliaryItem:nth-child(32) {
+  transform: rotateZ(155deg);
+}
+.eye__ciliaryItem:nth-child(33) {
+  transform: rotateZ(160deg);
+}
+.eye__ciliaryItem:nth-child(34) {
+  transform: rotateZ(165deg);
+}
+.eye__ciliaryItem:nth-child(35) {
+  transform: rotateZ(170deg);
+}
+.eye__ciliaryItem:nth-child(36) {
+  transform: rotateZ(175deg);
+}
+.eye__ciliaryItem:nth-child(37) {
+  transform: rotateZ(180deg);
+}
+.eye__ciliaryItem:nth-child(38) {
+  transform: rotateZ(185deg);
+}
+.eye__ciliaryItem:nth-child(39) {
+  transform: rotateZ(190deg);
+}
+.eye__ciliaryItem:nth-child(40) {
+  transform: rotateZ(195deg);
+}
+.eye__ciliaryItem:nth-child(41) {
+  transform: rotateZ(200deg);
+}
+.eye__ciliaryItem:nth-child(42) {
+  transform: rotateZ(205deg);
+}
+.eye__ciliaryItem:nth-child(43) {
+  transform: rotateZ(210deg);
+}
+.eye__ciliaryItem:nth-child(44) {
+  transform: rotateZ(215deg);
+}
+.eye__ciliaryItem:nth-child(45) {
+  transform: rotateZ(220deg);
+}
+.eye__ciliaryItem:nth-child(46) {
+  transform: rotateZ(225deg);
+}
+.eye__ciliaryItem:nth-child(47) {
+  transform: rotateZ(230deg);
+}
+.eye__ciliaryItem:nth-child(48) {
+  transform: rotateZ(235deg);
+}
+.eye__ciliaryItem:nth-child(49) {
+  transform: rotateZ(240deg);
+}
+.eye__ciliaryItem:nth-child(50) {
+  transform: rotateZ(245deg);
+}
+.eye__ciliaryItem:nth-child(51) {
+  transform: rotateZ(250deg);
+}
+.eye__ciliaryItem:nth-child(52) {
+  transform: rotateZ(255deg);
+}
+.eye__ciliaryItem:nth-child(53) {
+  transform: rotateZ(260deg);
+}
+.eye__ciliaryItem:nth-child(54) {
+  transform: rotateZ(265deg);
+}
+.eye__ciliaryItem:nth-child(55) {
+  transform: rotateZ(270deg);
+}
+.eye__ciliaryItem:nth-child(56) {
+  transform: rotateZ(275deg);
+}
+.eye__ciliaryItem:nth-child(57) {
+  transform: rotateZ(280deg);
+}
+.eye__ciliaryItem:nth-child(58) {
+  transform: rotateZ(285deg);
+}
+.eye__ciliaryItem:nth-child(59) {
+  transform: rotateZ(290deg);
+}
+.eye__ciliaryItem:nth-child(60) {
+  transform: rotateZ(295deg);
+}
+.eye__ciliaryItem:nth-child(61) {
+  transform: rotateZ(300deg);
+}
+.eye__ciliaryItem:nth-child(62) {
+  transform: rotateZ(305deg);
+}
+.eye__ciliaryItem:nth-child(63) {
+  transform: rotateZ(310deg);
+}
+.eye__ciliaryItem:nth-child(64) {
+  transform: rotateZ(315deg);
+}
+.eye__ciliaryItem:nth-child(65) {
+  transform: rotateZ(320deg);
+}
+.eye__ciliaryItem:nth-child(66) {
+  transform: rotateZ(325deg);
+}
+.eye__ciliaryItem:nth-child(67) {
+  transform: rotateZ(330deg);
+}
+.eye__ciliaryItem:nth-child(68) {
+  transform: rotateZ(335deg);
+}
+.eye__ciliaryItem:nth-child(69) {
+  transform: rotateZ(340deg);
+}
+.eye__ciliaryItem:nth-child(70) {
+  transform: rotateZ(345deg);
+}
+.eye__ciliaryItem:nth-child(71) {
+  transform: rotateZ(350deg);
+}
+.eye__ciliaryItem:nth-child(72) {
+  transform: rotateZ(355deg);
+}
+.eye__reflect {
+  --yRef: 12deg;
+  --xRef: -12deg;
+  position: absolute;
+  z-index: 4;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  opacity: 0.85;
+  background-color: #fff;
+  filter: blur(0.5px);
+  transition: transform 0.2s ease;
+  transform: rotateX(calc(var(--vRefAngle) + var(--yRef))) rotateY(calc(var(--vRefAngle) + var(--xRef))) translateZ(90px);
+}
+.eye__reflect--sub {
+  --yRef: 20deg;
+  --xRef: -20deg;
+  width: 75px;
+  height: 75px;
+  opacity: 0.2;
+  filter: blur(1px);
+  background-color: transparent;
+  background-image: linear-gradient(-45deg, #fff, #fff0);
+}
+.eye__reflect--tiny {
+  --yRef: 26deg;
+  --xRef: -4deg;
+  width: 8px;
+  height: 8px;
+  opacity: 0.9;
+}
+
+.open {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: #fff;
+  z-index: 3;
+}
+
+
+
+ul li{
+    list-style-type: none;
+}
+
+a{
+  color: #fff;
+}
+.eye, .eye__iris {
+  /* transitionを追加することで、--vxAngleが変わった時にゆっくり変化する */
+  transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.open{
+  z-index: 1000;
+}
+
+

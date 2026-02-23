@@ -1,0 +1,148 @@
+html{
+    height: 100%;
+}
+body{
+  background-color:black;
+  cursor: none;
+  height: 100%;
+}
+.top{
+  top: 0;
+  left: 0;
+  width: 60px;
+  height: 30px;
+  font-size: 20px;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  color: black;
+  text-decoration: none;
+}
+.link{
+  width: 700px;
+  position: relative;
+  top: 200px;
+  left: 300px;
+  display: flex;
+  justify-content: space-between;
+}
+#bb1{
+  filter: hue-rotate(90deg);
+}
+#a1,#b1{
+  border-radius: 50%;
+  display: inline-block;
+  border: 8px double green;
+}
+#aa1,#bb1{
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(blue,green,purple,red);
+  border-radius: 50% 50% 50% 50%;
+  scale: 0;
+}
+
+
+
+
+/* カーソル */
+.loader {
+  width: 100px;
+  height: 100px;
+  position: relative;
+}
+.loader-inner {
+  position: absolute;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  box-sizing: border-box;
+}
+.before {
+  top: 5px; left: 5px; right: 5px; bottom: 5px;
+  border-left-color: var(--line-color);
+  border-right-color: var(--line-color);
+}
+.after {
+  top: 15px; left: 15px; right: 15px; bottom: 15px;
+  border-top-color: var(--line-color);
+  border-left-color: var(--line-color);
+}
+/* outerとouter-2を共通設定にする */
+.outer, .outer-2 {
+  top: -5px; left: -5px; right: -5px; bottom: -5px;
+  border-width: 2px; /* 太さもお好みで */
+}
+/* 1本目：下側に色 */
+.outer {
+  border-bottom-color: var(--line-color);
+}
+/* 2本目（追加分）：上側に色 */
+.outer-2 {
+  border-top-color: var(--line-color);
+}
+
+.loader {
+  width: 100px;
+  height: 100px;
+  position: fixed; /* absoluteからfixedに変更 */
+  top: 0;
+  left: 0;
+  pointer-events: none; /* 下にあるリンクをクリックできるようにする */
+  z-index: 9999; /* 一番手前に出す */
+  opacity: 0; 
+  transition: opacity 0.3s ease;
+}
+/* CSS変数が設定されていない場合のために、色を指定しておくと安心です */
+:root {
+  --line-color: rgb(255, 0, 0); /* 好きな色に */
+  --speed: 2s;
+}
+
+.bo{
+  display: flex;
+  justify-content: center;
+}
+
+/* 目 */
+.s1{
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+
+  background: radial-gradient(circle at 30% 30%, #ffffff, #555555);
+  box-shadow: 12px 12px 25px 2px rgba(0, 0, 0, 0.8);
+  overflow: hidden;
+  margin-top: 15px;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.d1{
+  width: 70px;
+  height: 70px;
+  background-color: rgb(52, 27, 0);
+  border-radius: 50% 50% 50% 50%;
+  transition: transform 1s ease-out;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.aa{
+  width: 35px;
+  height: 35px;
+  background-color: black;
+  border-radius: 50%;
+  transition: transform 0.8s ease-out;
+}
+
+.ga{
+  position: absolute;
+  rotate: -90deg;
+  width: 300px;
+  height: auto;
+  left: 490px;
+  top: auto;
+}
